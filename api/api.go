@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/arincantikam26/volunteeredu/repository"
 	"github.com/gin-gonic/gin"
@@ -71,6 +72,10 @@ func (api *API) Handler() *gin.Engine {
 }
 
 func (api *API) Start() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	fmt.Println("starting web server at https://localhost:8080/")
-	api.Handler().Run()
+	api.Handler().Run(":" + port)
 }
