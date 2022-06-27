@@ -1,1 +1,1 @@
-web:bin/volunteeredu
+web:bin/main.go
