@@ -12,21 +12,19 @@ Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tata
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
   - [How to Run Service](#how-to-run-service)
-  - [Available Users Login](#)
+  - [Available Users Login](#available-users-login)
   - [Unit Testing](#unit-testing)
 - [Cors Blocked Installation](#cors-addblocks-installation)
 - [Backend](#backend)
   - [Available API](#available-apis)
 - [Frontend](#frontend)
-  - [API Documentation]()
-- [Technology Used](#)
-- [Assets VolunteerEdu]()
-  - [Website page]()
-  - [Mockup Design]()
-  - [ERD Database]()
-  - [Pitch Deck]()
-- [Server URL]()
-
+  - [API Documentation](#api-documentation)
+- [Technology Used](#technology-used)
+- [Assets VolunteerEdu](#assets-volunteeredu)
+  - [Mockup Design](#mockup-design)
+  - [ERD Database](#erd-database)
+  - [Pitch Deck](#pitch-deck)
+- [Server URL](#serve-url)
 
 ------
 
@@ -72,8 +70,11 @@ go run main.go
 2. Main Service: run `main.go` inside directory `final-project-engineering-74\backend` to running main service
 ```
 cd backend/
+```
+```
 go run main.go
 ```
+
 
 3. Main Page: run `npm start` inside directory `final-project-engineering-74\frontend` ro running main page
 ```
@@ -81,6 +82,19 @@ cd frontend/
 npm start
 ``` 
 nb : you must run inside the root directory `final-project-engineering-74`
+
+### Available Users Login
+1. Admin
+  Email : admin@gmail.com
+  Password : admin123
+2. Users
+  - Users 1
+  Email : arin@gmail.com
+  Password : 12345678
+  - Users 2
+  Email : dewi@gmail.com
+  Password : 12345678
+  - Users 3 > Enable to register with new user
 
 ### Unit-testing
 Run the following code in terminal:
@@ -145,8 +159,8 @@ $ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ar
     - Method : `GET`
     - Endpoint : `/api/v1/users/:id`
   - Get user by token
-  - Method : `GET`
-  - Endpoint : `/api/v1/users/token/:id`
+    - Method : `GET`
+    - Endpoint : `/api/v1/users/token/:id`
 ------
 2. Class Schedule
   - Get all class
@@ -240,3 +254,39 @@ $ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ar
       {
         message: "fail"
       }
+
+# Technology Used
+  - **Management Project**  : Jira
+  - **Development Code**    : Github
+  - **Code Editor**         : Visual Studio Code
+
+## Backend Technology
+  - Golang
+  - Gin Gonic
+  - SQLite
+  - Ginkgo
+  - Postman
+  - DBeaver
+
+## Frontend Technology
+  - Javascript
+  - ReactJS
+  - Bootstrap, CSS
+  - Zustand
+  - Axios
+
+------
+
+# Assets VolunteerEdu
+## Mockup Design
+[Link Mockup Design Using Figma](https://www.figma.com/file/RkZCScujaaZJyYTUQsWWiE/Untitled?node-id=0%3A1)
+
+## ERD Database
+![Image alt text](ERD_volunteeredu.png)
+
+## Pitch Deck
+[Link PPT Pitch Deck VolunteerEdu](https://docs.google.com/presentation/d/1ThDTCRhtAMq4akMxU5Lp7BXsrnnKF14apjOwhYiCWeQ/edit#slide=id.p1)
+
+# Serve URL
+## Backend
+## Frontend
