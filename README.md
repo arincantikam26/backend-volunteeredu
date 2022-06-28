@@ -88,13 +88,13 @@ nb : you must run inside the root directory `final-project-engineering-74`
   Email : admin@gmail.com
   Password : admin123
 2. Users
-  - Users 1
-  Email : arin@gmail.com
-  Password : 12345678
-  - Users 2
-  Email : dewi@gmail.com
-  Password : 12345678
-  - Users 3 > Enable to register with new user
+    - Users 1
+    Email : arin@gmail.com
+    Password : 12345678
+    - Users 2
+    Email : dewi@gmail.com
+    Password : 12345678
+    - Users 3 > Enable to register with new user
 
 ### Unit-testing
 Run the following code in terminal:
@@ -277,16 +277,16 @@ $ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ar
 
 ------
 
-# Assets VolunteerEdu
-## Mockup Design
+## Assets VolunteerEdu
+### Mockup Design
 [Link Mockup Design Using Figma](https://www.figma.com/file/RkZCScujaaZJyYTUQsWWiE/Untitled?node-id=0%3A1)
 
-## ERD Database
+### ERD Database
 ![Image alt text](ERD_volunteeredu.png)
 
-## Pitch Deck
+### Pitch Deck
 [Link PPT Pitch Deck VolunteerEdu](https://docs.google.com/presentation/d/1ThDTCRhtAMq4akMxU5Lp7BXsrnnKF14apjOwhYiCWeQ/edit#slide=id.p1)
 
-# Serve URL
-## Backend
-## Frontend
+## Serve URL
+### Backend
+### Frontend
