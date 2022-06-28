@@ -11,7 +11,7 @@ import (
 
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "https://final-project-14h7uhyn0-rafiakbar13.vercel.app/")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "https://final-project-14h7uhyn0-rafiakbar13.vercel.app")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Access-Control-Allow-Origin, token, Origin, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, Cache-Control, X-Requested-With, multipart/form-data")
 		c.Writer.Header().Set("Access-Control-Expose-Headers", "Content-Length")
