@@ -24,6 +24,4 @@ func main() {
 
 	mainAPI.Start()
 
-	// router.Use(cors.Default())
-
 }

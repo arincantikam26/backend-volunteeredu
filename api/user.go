@@ -38,9 +38,8 @@ type StatusResponse struct {
 	StatusMessage string `json:"status_message"`
 }
 
-func (h *API) GetUsers(c *gin.Context) {
-	// h.AllowOrigin(c)
-	users, err := h.usersRepo.FetchUsers()
+func (api *API) GetUsers(c *gin.Context) {
+	users, err := api.usersRepo.FetchUsers()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"errors": err})
 		return
@@ -58,12 +57,11 @@ func (h *API) GetUsers(c *gin.Context) {
 	})
 }
 
-func (h *API) GetUserByID(c *gin.Context) {
-	// h.AllowOrigin(c)
+func (api *API) GetUserByID(c *gin.Context) {
 	idString := c.Param("id")
 	id, _ := strconv.Atoi(idString)
 
-	result, err := h.usersRepo.FetchUserByID(id)
+	result, err := api.usersRepo.FetchUserByID(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"errors": err})
 		return
@@ -74,8 +72,7 @@ func (h *API) GetUserByID(c *gin.Context) {
 	})
 
 }
-func (h *API) PostUserRegist(c *gin.Context) {
-	// h.AllowOrigin(c)
+func (api *API) PostUserRegist(c *gin.Context) {
 	var user repository.UserRequest
 
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -92,7 +89,7 @@ func (h *API) PostUserRegist(c *gin.Context) {
 	}
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), 8)
 
-	res, err := h.usersRepo.InsertUser(user.Fullname, user.Email, user.DateBirth, string(hashedPassword), user.Phone, user.Address)
+	res, err := api.usersRepo.InsertUser(user.Fullname, user.Email, user.DateBirth, string(hashedPassword), user.Phone, user.Address)
 	if res == nil && err == nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status code": http.StatusBadRequest,

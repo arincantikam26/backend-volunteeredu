@@ -16,7 +16,6 @@ type AdminResponse struct {
 }
 
 func (api *API) GetListParticipate(c *gin.Context) {
-	//api.AllowOrigin(c)
 	users, err := api.usersRepo.FetchParticipant()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -37,7 +36,6 @@ func (api *API) GetListParticipate(c *gin.Context) {
 }
 
 func (api *API) GetListVolunteer(c *gin.Context) {
-	//api.AllowOrigin(c)
 	users, err := api.usersRepo.FetchVolunteer()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{

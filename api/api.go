@@ -20,12 +20,13 @@ type API struct {
 func NewAPI(usersRepo repository.UserRepository, classRepo repository.ClassRepository, activityRepo repository.ActivityRepository, galleryRepo repository.GalleryRepository, roleRepo repository.RoleRepository) API {
 	gin := gin.Default()
 
+	gin.Use(CORSMiddleware())
+
 	api := API{
 		usersRepo, classRepo, activityRepo, galleryRepo, roleRepo, gin,
 	}
 
 	// gin.SetTrustedProxies([]string{"192.168.56.1"})
-	gin.Use(CORSMiddleware())
 
 	v1 := gin.Group("/api/v1")
 
@@ -72,10 +73,10 @@ func (api *API) Handler() *gin.Engine {
 }
 
 func (api *API) Start() {
+	fmt.Println("starting web server at https://localhost:8080/")
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
-	fmt.Println("starting web server at https://localhost:8080/")
 	api.Handler().Run(":" + port)
 }

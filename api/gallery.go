@@ -16,7 +16,6 @@ type GalleryUpload struct {
 }
 
 func (api *API) GetGallery(c *gin.Context) {
-	//api.AllowOrigin(c)
 	galeries, err := api.galleryRepo.FetchGallery()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -38,7 +37,6 @@ func (api *API) GetGallery(c *gin.Context) {
 }
 
 func (api *API) GetGalleryLimit(c *gin.Context) {
-	// //api.AllowOrigin(c)
 	galeries, err := api.galleryRepo.FetchGalleryLimit()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -60,7 +58,6 @@ func (api *API) GetGalleryLimit(c *gin.Context) {
 }
 
 func (api *API) GetGalleryByID(c *gin.Context) {
-	////api.AllowOrigin(c)
 	idString := c.Param("id")
 	id, _ := strconv.Atoi(idString)
 
@@ -78,7 +75,6 @@ func (api *API) GetGalleryByID(c *gin.Context) {
 }
 
 func (api *API) AddNewGallery(c *gin.Context) {
-	////api.AllowOrigin(c)
 	var gallery GalleryUpload
 
 	if err := c.ShouldBind(&gallery); err != nil {
@@ -109,7 +105,6 @@ func (api *API) AddNewGallery(c *gin.Context) {
 }
 
 func (api *API) UpdateGallery(c *gin.Context) {
-	////api.AllowOrigin(c)
 
 	var gallery GalleryUpload
 
@@ -156,7 +151,6 @@ func (api *API) UpdateGallery(c *gin.Context) {
 }
 
 func (api *API) DeleteGallery(c *gin.Context) {
-	//api.AllowOrigin(c)
 	galleryId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})

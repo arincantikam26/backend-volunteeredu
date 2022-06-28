@@ -2,59 +2,37 @@ package api
 
 import (
 	"context"
-	"log"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
 )
 
-// func (api *API) AllowOrigin(c *gin.Context) {
-// 	// localhost:8080 origin mendapat ijin akses
-// 	c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080, http://localhost:3000")
-// 	// semua method diperbolehkan masuk
-// 	c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
-// 	// semua header diperbolehkan untuk disisipkan
-// 	c.Writer.Header().Set("Access-Control-Allow-Headers",
-// 		"Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
-// 	// allow cookie
-// 	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
-
-// 	c.Header("Content-Type", "application/json")
-// 	if c.Request.Method == "OPTIONS" {
-// 		c.AbortWithStatus(204)
-// 		return
-// 	}
-// }
-
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
-		c.Writer.Header().Set("Access-Control-Allow-Credentials", "omit")
-		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
-		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT, PATCH, DELETE")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "https://final-project-14h7uhyn0-rafiakbar13.vercel.app/")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Access-Control-Allow-Origin, token, Origin, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, Cache-Control, X-Requested-With, multipart/form-data")
+		c.Writer.Header().Set("Access-Control-Expose-Headers", "Content-Length")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 
 		if c.Request.Method == "OPTIONS" {
+			fmt.Println("OPTIONS")
 			c.AbortWithStatus(204)
-			return
 		}
-
 		c.Next()
 	}
 }
 
-func (m *API) AuthMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
+func (api *API) AuthMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// m.AllowOrigin(c)
-
 		token, err := c.Request.Cookie("token")
 		if err != nil {
 			if err == http.ErrNoCookie {
-				// If no cookie is present, return unauthorized
 				c.JSON(http.StatusUnauthorized, gin.H{"Error4": err.Error()})
 				return
 			}
-			//no token field, return bad request
 			c.JSON(http.StatusBadRequest, gin.H{"Error5": err.Error()})
 			return
 		}
@@ -63,14 +41,12 @@ func (m *API) AuthMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
 
 		claims := &Claims{}
 
-		// Parse the JWT string and store the result in `claims`.
 		tkn, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
 			return jwtKey, nil
 		})
 
 		if err != nil {
 			if err == jwt.ErrSignatureInvalid {
-				//signature invalid
 				c.JSON(http.StatusUnauthorized, gin.H{"Error1": err.Error()})
 				return
 			}
@@ -93,10 +69,8 @@ func (m *API) AuthMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
 	}
 }
 
-func (m *API) AdminMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
+func (api *API) AdminMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
 	return gin.HandlerFunc(func(c *gin.Context) {
-		// // m.AllowOrigin(c)
-
 		role := c.Request.Context().Value("role")
 		if role != "1" { //1 is admin
 			c.JSON(http.StatusForbidden, gin.H{"Error": "Forbidden access"})
@@ -109,8 +83,6 @@ func (m *API) AdminMiddleware(next gin.HandlerFunc) gin.HandlerFunc {
 
 func (api *API) GET(next gin.HandlerFunc) gin.HandlerFunc {
 	return gin.HandlerFunc(func(ctx *gin.Context) {
-		//api.AllowOrigin(ctx)
-
 		if ctx.Request.Method != http.MethodGet {
 			ctx.JSON(http.StatusMethodNotAllowed, gin.H{"Error": "Need GET Method!"})
 			return
@@ -121,9 +93,6 @@ func (api *API) GET(next gin.HandlerFunc) gin.HandlerFunc {
 
 func (api *API) POST(next gin.HandlerFunc) gin.HandlerFunc {
 	return gin.HandlerFunc(func(ctx *gin.Context) {
-		log.Print("POST", ctx.Request.Method)
-		// api.AllowOrigin(ctx)
-
 		if ctx.Request.Method != http.MethodPost {
 			ctx.JSON(http.StatusMethodNotAllowed, gin.H{"Error": "Need POST Method!"})
 			return
@@ -134,8 +103,6 @@ func (api *API) POST(next gin.HandlerFunc) gin.HandlerFunc {
 
 func (api *API) DELETE(next gin.HandlerFunc) gin.HandlerFunc {
 	return gin.HandlerFunc(func(ctx *gin.Context) {
-		// api.AllowOrigin(ctx)
-
 		if ctx.Request.Method != http.MethodDelete {
 			ctx.JSON(http.StatusMethodNotAllowed, gin.H{"Error": "Need DELETE Method!"})
 			return
@@ -146,8 +113,6 @@ func (api *API) DELETE(next gin.HandlerFunc) gin.HandlerFunc {
 
 func (api *API) PATCH(next gin.HandlerFunc) gin.HandlerFunc {
 	return gin.HandlerFunc(func(ctx *gin.Context) {
-		// api.AllowOrigin(ctx)
-
 		if ctx.Request.Method != http.MethodPatch {
 			ctx.JSON(http.StatusMethodNotAllowed, gin.H{"Error": "Need PATCH Method!"})
 			return

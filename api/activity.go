@@ -13,15 +13,9 @@ type ChooseRoleResponse struct {
 	ClassID   int `json:"class_id"`
 	RoleActID int `json:"role_act"`
 }
-type chooseRoleRequest struct {
-	UserID    int `json:"user_id"`
-	ClassID   int `json:"class_id"`
-	RoleActID int `json:"role_act_id"`
-}
 
 func (api *API) ChooseRole(c *gin.Context) {
-	//api.AllowOrigin(c)
-	var chooseRole chooseRoleRequest
+	var chooseRole ChooseRoleResponse
 	if err := c.ShouldBindJSON(&chooseRole); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"errors": err,
@@ -60,7 +54,6 @@ func (api *API) ChooseRole(c *gin.Context) {
 }
 
 func (api *API) GetMyActivity(c *gin.Context) {
-	//api.AllowOrigin(c)
 	userID := c.Param("id")
 	userIDInt, _ := strconv.Atoi(userID)
 	res, err := api.activityRepo.FetchActivityByID(userIDInt)

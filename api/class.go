@@ -31,7 +31,6 @@ type ClassForm struct {
 }
 
 func (api *API) GetClasses(c *gin.Context) {
-	//api.AllowOrigin(c)
 	classes, err := api.classRepo.FetchClass()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -53,7 +52,6 @@ func (api *API) GetClasses(c *gin.Context) {
 }
 
 func (api *API) GetClassLimit(c *gin.Context) {
-	//api.AllowOrigin(c)
 	classes, err := api.classRepo.FetchClassLimit()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -75,7 +73,6 @@ func (api *API) GetClassLimit(c *gin.Context) {
 }
 
 func (api *API) GetClassByID(c *gin.Context) {
-	//api.AllowOrigin(c)
 	ID := c.Param("id")
 	classid, _ := strconv.Atoi(ID)
 
@@ -93,7 +90,6 @@ func (api *API) GetClassByID(c *gin.Context) {
 }
 
 func (api *API) AddNewClass(c *gin.Context) {
-	//api.AllowOrigin(c)
 	var class ClassForm
 	if err := c.ShouldBind(&class); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -126,8 +122,6 @@ func (api *API) AddNewClass(c *gin.Context) {
 }
 
 func (api *API) UpdateClass(c *gin.Context) {
-	//api.AllowOrigin(c)
-
 	var class ClassForm
 
 	if err := c.ShouldBind(&class); err != nil {
@@ -167,8 +161,6 @@ func (api *API) UpdateClass(c *gin.Context) {
 }
 
 func (api *API) DeleteClass(c *gin.Context) {
-	//api.AllowOrigin(c)
-
 	classId, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {

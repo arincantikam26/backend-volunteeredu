@@ -1,6 +1,6 @@
 # Final Project Kelompok 74 - VolunteerEdu
 
-![Image alt text](logoVE.png)
+![Image alt text](assets/logoVE.png)
 
 Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tatap muka maupun daring kepada anak-anak maupun orang tua di daerah-daerah Indonesia .
 
@@ -11,6 +11,7 @@ Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tata
 - [Profile Team](#profile-team)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
+  - [Server URL](#server-url)
   - [How to Run Service](#how-to-run-service)
   - [Available Users Login](#available-users-login)
   - [Unit Testing](#unit-testing)
@@ -24,7 +25,6 @@ Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tata
   - [Mockup Design](#mockup-design)
   - [ERD Database](#erd-database)
   - [Pitch Deck](#pitch-deck)
-- [Server URL](#serve-url)
 
 ------
 
@@ -56,6 +56,13 @@ Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tata
 ------
 
 ## Getting Started
+
+### Server URL
+- Backend
+https://go-volunteeredu.herokuapp.com/api/v1/classes
+
+- Frontend
+https://final-project-14h7uhyn0-rafiakbar13.vercel.app/
 
 ### How to run service
 **Alert! : Before run service in localhost, please install addblock chrome and add ekstensions CORS for avoid CORS Blocked when using app!** [Clik this how to install adblock CORS](#cors-addblocks-installation)
@@ -271,7 +278,9 @@ $ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ar
 ## Frontend Technology
   - Javascript
   - ReactJS
-  - Bootstrap, CSS
+  - React-bootstrap, Mdb-bootstrap
+  - React-Hook-Form
+  - React-router-dom
   - Zustand
   - Axios
 
@@ -282,11 +291,7 @@ $ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --ar
 [Link Mockup Design Using Figma](https://www.figma.com/file/RkZCScujaaZJyYTUQsWWiE/Untitled?node-id=0%3A1)
 
 ### ERD Database
-![Image alt text](ERD_volunteeredu.png)
+![Image alt text](assets/ERD_volunteeredu.png)
 
 ### Pitch Deck
 [Link PPT Pitch Deck VolunteerEdu](https://docs.google.com/presentation/d/1ThDTCRhtAMq4akMxU5Lp7BXsrnnKF14apjOwhYiCWeQ/edit#slide=id.p1)
-
-## Serve URL
-### Backend
-### Frontend

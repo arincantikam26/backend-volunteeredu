@@ -31,7 +31,6 @@ type AuthErrorResponse struct {
 	Error string `json:"error"`
 }
 
-//jwt key for signature
 var jwtKey = []byte("secret")
 
 type Claims struct {
@@ -41,7 +40,6 @@ type Claims struct {
 }
 
 func (api *API) LoginUser(c *gin.Context) {
-	//api.AllowOrigin(c)
 	var user User
 	if err := c.ShouldBindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -129,7 +127,6 @@ func (api *API) LoginUser(c *gin.Context) {
 }
 
 func (api *API) GetUserID(c *gin.Context) {
-	// api.AllowOrigin(c)
 	token, err := c.Cookie("token")
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
@@ -151,7 +148,6 @@ func (api *API) GetUserID(c *gin.Context) {
 }
 
 func (api *API) LogoutUser(c *gin.Context) {
-	//api.AllowOrigin(c)
 	token, err := c.Request.Cookie("token")
 	if err != nil {
 		if err == http.ErrNoCookie {

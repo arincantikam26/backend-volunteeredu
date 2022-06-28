@@ -13,7 +13,7 @@ type RoleResponse struct {
 }
 
 func (api *API) GetRoles(c *gin.Context) {
-	// api.AllowOrigin(c)
+
 	roles, err := api.roleRepo.GetRole()
 
 	if err != nil {
