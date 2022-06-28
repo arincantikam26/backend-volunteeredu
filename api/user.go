@@ -19,7 +19,6 @@ type UserResponse struct {
 	DateBirth string `json:"date_birth"`
 	Phone     string `json:"phone"`
 	Address   string `json:"address"`
-	Password  string `json:"password"`
 	RoleID    int    `json:"role_user_id"`
 }
 
@@ -38,8 +37,9 @@ type StatusResponse struct {
 	StatusMessage string `json:"status_message"`
 }
 
-func (api *API) GetUsers(c *gin.Context) {
-	users, err := api.usersRepo.FetchUsers()
+func (h *API) GetUsers(c *gin.Context) {
+	// h.AllowOrigin(c)
+	users, err := h.usersRepo.FetchUsers()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"errors": err})
 		return
@@ -57,11 +57,11 @@ func (api *API) GetUsers(c *gin.Context) {
 	})
 }
 
-func (api *API) GetUserByID(c *gin.Context) {
+func (h *API) GetUserByID(c *gin.Context) {
 	idString := c.Param("id")
 	id, _ := strconv.Atoi(idString)
 
-	result, err := api.usersRepo.FetchUserByID(id)
+	result, err := h.usersRepo.FetchUserByID(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"errors": err})
 		return
@@ -72,7 +72,8 @@ func (api *API) GetUserByID(c *gin.Context) {
 	})
 
 }
-func (api *API) PostUserRegist(c *gin.Context) {
+func (h *API) PostUserRegist(c *gin.Context) {
+	// h.AllowOrigin(c)
 	var user repository.UserRequest
 
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -89,7 +90,7 @@ func (api *API) PostUserRegist(c *gin.Context) {
 	}
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), 8)
 
-	res, err := api.usersRepo.InsertUser(user.Fullname, user.Email, user.DateBirth, string(hashedPassword), user.Phone, user.Address)
+	res, err := h.usersRepo.InsertUser(user.Fullname, user.Email, user.DateBirth, string(hashedPassword), user.Phone, user.Address)
 	if res == nil && err == nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status code": http.StatusBadRequest,
@@ -110,7 +111,6 @@ func convertToUserResponse(h repository.User) UserResponse {
 		Fullname:  h.Fullname,
 		Email:     h.Email,
 		DateBirth: h.DateBirth,
-		Password:  h.Password,
 		Phone:     h.Phone,
 		Address:   h.Address,
 		RoleID:    h.RoleID,

@@ -40,7 +40,6 @@ func (u *UserRepository) FetchUserByID(id int) (User, error) {
 		&user.Fullname,
 		&user.Email,
 		&user.DateBirth,
-		&user.Password,
 		&user.Phone,
 		&user.Address,
 		&user.RoleID,
