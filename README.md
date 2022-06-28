@@ -1,6 +1,34 @@
-![Image alt text](logoVE.png)
-
 # Final Project Kelompok 74 - VolunteerEdu
+
+![Image alt text](frontend/src/assets/gallery/logoVE.png)
+</n>
+Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tatap muka maupun daring kepada anak-anak maupun orang tua di daerah-daerah Indonesia .
+
+------
+
+## Table of Contents
+
+- [Profile Team](#profile-team)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+  - [How to Run Service](#how-to-run-service)
+  - [Available Users Login](#)
+  - [Unit Testing](#unit-testing)
+- [Cors Blocked Installation](#cors-addblocks-installation)
+- [Backend](#backend)
+  - [Available API](#available-apis)
+- [Frontend](#frontend)
+  - [API Documentation]()
+- [Technology Used](#)
+- [Assets VolunteerEdu]()
+  - [Website page]()
+  - [Mockup Design]()
+  - [ERD Database]()
+  - [Pitch Deck]()
+- [Server URL]()
+
+
+------
 
 ## Profile Team
 |ID | Nama | Role | Profile |
@@ -11,6 +39,8 @@
 | FE2306138 | Sechan Al Farisi | Frontend Engineer | [alfarisisechan](https://github.com/alfarisisechan) |
 | FE2239831 | Ni Luh Dita Oktaviari | Frontend Engineer | [ditaoktaviari](https://github.com/ditaoktaviari) |
 | FE2001900 | Dzihan Septiangraini | Frontend Engineer | [DzihanSeptiangraini](https://github.com/DzihanSeptiangraini) |
+
+------
 
 ## Requirements
 
@@ -25,7 +55,13 @@
 - Admin should able to manage class schedules.
 - Admin should able to manage gallery.
 
-## How to run service
+------
+
+## Getting Started
+
+### How to run service
+**Alert! : Before run service in localhost, please install addblock chrome and add ekstensions CORS for avoid CORS Blocked when using app!** [Clik this how to install adblock CORS](#cors-addblocks-installation)
+
 Run the following code in terminal:
 1. Migration: run `main.go` inside directory `final-project-engineering-74\backend\database\migration` to Migration database SQLite
 ```
@@ -46,88 +82,7 @@ npm start
 ``` 
 nb : you must run inside the root directory `final-project-engineering-74`
 
-# BACKEND
-## Available APIs
-### User
-#### Register user
-- Method : `POST`
-- Endpoint : `/api/v1/users/regist`
-#### Login user
-- Method : `POST`
-- Endpoint : `/api/v1/users/login`
-#### Logout user
-- Method : `POST`
-- Endpoint : `/api/v1/users/logout`
-#### Get all user
-- Method : `GET`
-- Endpoint : `/api/v1/users`
-#### Get user by id
-- Method : `GET`
-- Endpoint : `/api/v1/users/:id`
-#### Get user by token
-- Method : `GET`
-- Endpoint : `/api/v1/users/token/:id`
-------
-### Class Schedule
-#### Get all class
-- Method : `GET`
-- Endpoint : `/api/v1/classes`
-#### Get class by id
-- Method : `GET`
-- Endpoint : `/api/v1/classes/:id`
-#### Get class limit
-- Method : `GET`
-- Endpoint : `/api/v1/class/limit`
-#### Admin add class
-- Method : `POST`
-- Endpoint : `/api/v1/add/class`
-#### Admin update class
-- Method : `PATCH`
-- Endpoint : `/api/v1/class/update/:id`
-#### Admin delete class
-- Method : `POST`
-- Endpoint : `/api/v1/class/delete/:id`
-------
-### Gallery
-#### Get all gallery
-- Method : `GET`
-- Endpoint : `/api/v1/gallery`
-#### Get gallery by id
-- Method : `GET`
-- Endpoint : `/api/v1/gallery/:id`
-#### Get gallery limit
-- Method : `GET`
-- Endpoint : `/api/v1/gallery/limit`
-#### Admin add gallery
-- Method : `POST`
-- Endpoint : `/api/v1/gallery/add`
-#### Admin update gallery
-- Method : `PATCH`
-- Endpoint : `/api/v1/gallery/update/:id`
-#### Admin delete gallery
-- Method : `POST`
-- Endpoint : `/api/v1/gallery/delete/:id`
-------
-### Activities
-#### Get user activity
-- Method : `GET`
-- Endpoint : `/api/v1/myactivity/:id`
-#### Get roles user
-- Method : `GET`
-- Endpoint : `/api/v1/roles`
-#### Choose roles user
-- Method : `POST`
-- Endpoint : `/api/v1/chooserole`
-------
-### Admin
-#### Get list participant
-- Method : `GET`
-- Endpoint : `/api/v1/participate`
-#### Get list volunteer
-- Method : `GET`
-- Endpoint : `/api/v1/volunteer`
-------
-## Unit-testing
+### Unit-testing
 Run the following code in terminal:
 1. Repository-test: run `main.go` inside directory `final-project-engineering-74\backend\repository` to running unit-test using ginkgo
 ```
@@ -135,47 +90,153 @@ cd backend/repository
 ginkgo . or ginkgo -v
 ```
 
-# FRONTEND
-# API Documentation
+------
 
-### Register
+## CORS Addblocks Installation
+**Always use this addblock when open the app in chrome:**
+- Windows
+1. Go to Document Folder and create new folder (my) to save addblocks browser
+```
+cd c:/Users<(Your-Name-Folder>/Documents
+mkdir my
+```
+2. Open folder (my) and create new folder (data)
+```
+cd c:/Users<(Your-Name-Folder>/Documents/my
+mkdir data
+```
+3. In folder (my), open notepad and copy text below and save as file name -> (disable chrome1.bat) -> save as batch file with .bat extension
+Don't forget to change (victo) to your folder name, adjust with your chrome storage path 
+```
+cd C:\Program Files\Google\Chrome\Application
+chrome.exe --user-data-dir="C:\Users\victo(replace with  your folder name)\Documents\my\data" --disable-web-security
+```
+- Linux
+```
+google-chrome --disable-web-security
+```
+- Mac
+In terminal enter : 
+```
+$ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
+```
 
-Method: POST
-Data Request: 
-{
-  "nama": "...",
-  "email": "...",
-  "password": "..."
-}
+- Tutorial link for addblock chrome
+[Link explanation of how to install addblock](https://youtu.be/3yACsnV30N8)
 
-Data Response:
-- Berhasil
-  {
-    message: "success"
-  }
+------
 
-- Gagal
-  {
-    message: "fail"
-  }
-  
-  
-### Login
+## BACKEND
+### Available APIs
+1.  User
+  - Register user
+    - Method : `POST`
+    - Endpoint : `/api/v1/users/regist`
+  - Login user
+    - Method : `POST`
+    - Endpoint : `/api/v1/users/login`
+  - Logout user
+    - Method : `POST`
+    - Endpoint : `/api/v1/users/logout`
+  - Get all user
+    - Method : `GET`
+    - Endpoint : `/api/v1/users`
+  - Get user by id
+    - Method : `GET`
+    - Endpoint : `/api/v1/users/:id`
+  - Get user by token
+  - Method : `GET`
+  - Endpoint : `/api/v1/users/token/:id`
+------
+2. Class Schedule
+  - Get all class
+    - Method : `GET`
+    - Endpoint : `/api/v1/classes`
+  - Get class by id
+    - Method : `GET`
+    - Endpoint : `/api/v1/classes/:id`
+  - Get class limit
+    - Method : `GET`
+    - Endpoint : `/api/v1/class/limit`
+ 
+------
+3. Gallery
+  - Get all gallery
+    - Method : `GET`
+    - Endpoint : `/api/v1/gallery`
+  - Get gallery by id
+    - Method : `GET`
+    - Endpoint : `/api/v1/gallery/:id`
+  - Get gallery limit
+    - Method : `GET`
+    - Endpoint : `/api/v1/gallery/limit`
+  - Admin add gallery
+    - Method : `POST`
+    - Endpoint : `/api/v1/gallery/add`
+  - Admin update gallery
+    - Method : `PATCH`
+    - Endpoint : `/api/v1/gallery/update/:id`
+  - Admin delete gallery
+    - Method : `DELETE`
+    - Endpoint : `/api/v1/gallery/delete/:id`
+------
+4. Activities
+  - Get user activity
+    - Method : `GET`
+    - Endpoint : `/api/v1/myactivity/:id`
+  - Get roles user
+    - Method : `GET`
+    - Endpoint : `/api/v1/roles`
+  - Choose roles user
+    - Method : `POST`
+    - Endpoint : `/api/v1/chooserole`
+------
+5. Admin
+  - Get list participant
+    - Method : `GET`
+    - Endpoint : `/api/v1/participate`
+  - Get list volunteer
+    - Method : `GET`
+    - Endpoint : `/api/v1/volunteer`
+------
 
-Method: POST
-Data Request: 
-{
-  "email": "...",
-  "password": "..."
-}
+## FRONTEND
+### API Documentation
+1. Register
+  - Method: POST
+  - Data Request: 
+    {
+      "nama": "...",
+      "email": "...",
+      "password": "..."
+    }
 
-Data Response:
-- Berhasil
-  {
-    message: "success"
-  }
+  - Data Response:
+    - Berhasil
+      {
+        message: "success"
+      }
 
-- Gagal
-  {
-    message: "fail"
-  }
+    - Gagal
+      {
+        message: "fail"
+      }
+      
+2. Login
+  - Method: POST
+  - Data Request: 
+    {
+      "email": "...",
+      "password": "..."
+    }
+
+  - Data Response:
+    - Berhasil
+      {
+        message: "success"
+      }
+
+    - Gagal
+      {
+        message: "fail"
+      }
