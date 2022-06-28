@@ -5,6 +5,12 @@
 Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tatap muka maupun daring kepada anak-anak maupun orang tua di daerah-daerah Indonesia .
 
 ------
+## Reminder! 
+This repository is just a clone for the backend service to deploy. 
+- This link for the github main code : https://github.com/rg-km/final-project-engineering-74
+- This link for the github frontend deploy : https://github.com/rafiakbar13/kelompok-74
+
+------
 
 ## Table of Contents
 
