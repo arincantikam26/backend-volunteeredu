@@ -1,7 +1,7 @@
 # Final Project Kelompok 74 - VolunteerEdu
 
-![Image alt text](frontend/src/assets/gallery/logoVE.png)
-</n>
+![Image alt text](logoVE.png)
+
 Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tatap muka maupun daring kepada anak-anak maupun orang tua di daerah-daerah Indonesia .
 
 ------
