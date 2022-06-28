@@ -8,7 +8,7 @@ Sebuah platform berbasis website yang mengadakan  kelas pembelajaran secara tata
 ## Reminder! 
 This repository is just a clone for the backend service to deploy. 
 - This link for the github main code : https://github.com/rg-km/final-project-engineering-74
-- This link for the github frontend deploy : https://github.com/rafiakbar13/kelompok-74
+- This link for the github frontend deploy : https://github.com/rafiakbar13/final-project-kelompok-74
 
 ------
 
@@ -68,7 +68,7 @@ This repository is just a clone for the backend service to deploy.
 https://go-volunteeredu.herokuapp.com/api/v1/classes
 
 - Frontend
-https://final-project-14h7uhyn0-rafiakbar13.vercel.app/
+https://final-project-kelompok-74-rafiakbar13.vercel.app/
 
 ### How to run service
 **Alert! : Before run service in localhost, please install addblock chrome and add ekstensions CORS for avoid CORS Blocked when using app!** [Clik this how to install adblock CORS](#cors-addblocks-installation)
