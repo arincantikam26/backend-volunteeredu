@@ -16,6 +16,7 @@ func CORSMiddleware() gin.HandlerFunc {
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Access-Control-Allow-Origin, token, Origin, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, Cache-Control, X-Requested-With, multipart/form-data")
 		c.Writer.Header().Set("Access-Control-Expose-Headers", "Content-Length")
 		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		c.Writer.Header().Set("Content-Type", "application/json, multipart/form-data")
 
 		if c.Request.Method == "OPTIONS" {
 			fmt.Println("OPTIONS")
